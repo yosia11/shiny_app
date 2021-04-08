@@ -18,7 +18,7 @@ app.title <- 'An Unified Shiny Portal'
 ui <- navbarPage(
   title = app.title, 
   id = 'tabs', 
-  selected = 'Login', 
+  selected = 'Login to continue', 
   theme = 'main.css',              # defined in www/main.css
   header = header,                 # defined in global.R
   footer = footer,                 # defined in global.R
