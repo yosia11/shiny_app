@@ -14,7 +14,7 @@ tab_login$ui <- tabPanel(
 
 # define the ui of the login dialog box
 login_dialog <- modalDialog(
-  title = 'Login to continue',
+  title = 'Login System',
   footer = actionButton('tab_login.login','Login'),
   textInput('tab_login.username','Username'),
   passwordInput('tab_login.password','Password'),
