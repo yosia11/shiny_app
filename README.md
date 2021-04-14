@@ -10,4 +10,4 @@ This repository was created to help you learn more about Shiny:
 * [semantic.dashboard](https://appsilon.github.io/semantic.dashboard/index.html)
 
 
-**Tips:** In oder to mastering all of those packages, please selected one of them first and then look forward to one another.
+**Tips:** In order to master all of those existing packages, the first step you have to do is a better understanding of one of them. Then adapt with another package later.  
