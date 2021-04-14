@@ -24,6 +24,7 @@ will be sufficient for this post.
 CSS controls the style of HTML elements by Class. This is preferable to create standardized web application, with no harm to your shiny app. CSS formatting file is located under `./www` folder for shiny. 
 
 ## Shiny File Structure
+
 In order to make it easy to unit test each individual shiny app, I created directories for each shiny app, where I also have an `app.R` for testing purpose. 
 
 * `app.R` in sub-folder: used for unit testing of this individual shiny app.
@@ -31,6 +32,8 @@ In order to make it easy to unit test each individual shiny app, I created direc
 * `tab.R` in sub-folder: used to create a list, that wraps the `ui` and `server` of this shiny. After passing the unit test, it can be directly import to main shiny, for integration testing.
 * `global.R`: used to define gloabl settings, such as database connections, login credentials, page headers/footers.
 * `main.css` in www-folder: used to define the style of shiny app, by pointing to `theme` argument in `navbarPage`. In shiny, the images, css files or javascript codes are all located under `www` folder.
+
+<br>
 
 ```
 ├── 00_tab_login # sub directory for login page
@@ -52,7 +55,10 @@ In order to make it easy to unit test each individual shiny app, I created direc
 ``` 
 
 Using this file stucture, I can easily add/remove certain shiny tab, without affecting other components. 
-![](https://raw.githubusercontent.com/6chaoran/data-story/master/shiny/unified-shiny-portal/image/file_organization.PNG)
+
+<br>
+
+![](https://github.com/dsciencelabs/shiny_app/blob/main/02-unified-shiny-portal/images/file_organization.PNG?raw=true)
 
 
 ## Login Page
@@ -165,11 +171,15 @@ shinyApp(ui = ui, server = server)
 
 The tested login page
 
-![](https://raw.githubusercontent.com/6chaoran/data-story/master/shiny/unified-shiny-portal/image/login_message.PNG) 
+<br>
+
+![](https://github.com/dsciencelabs/shiny_app/blob/main/02-unified-shiny-portal/images/login_message.PNG?raw=true) 
 
 When successfully login, the page should be shown like this:
 
-![](https://raw.githubusercontent.com/6chaoran/data-story/master/shiny/unified-shiny-portal/image/successful_login.PNG)
+<br>
+
+![](https://github.com/dsciencelabs/shiny_app/blob/main/02-unified-shiny-portal/images/successful_login.PNG?raw=true)
 
 ## Integration Testing
 
@@ -260,8 +270,8 @@ In summary, in order to build a unified shiny portal:
 ### Complete Unified Shiny Portal
 
 #### [shiny app on shinyapps.io](https://6chaoran.shinyapps.io/unified-shiny-portal/)
-#### [github repo](https://github.com/6chaoran/data-story/tree/master/shiny/unified-shiny-portal)
+#### [github repo](https://github.com/dsciencelabs/shiny_app/blob/main/02-unified-shiny-portal)
 
-_login credential ( username: liuchr, password: 123456 )
+login credential ( username: liuchr, password: 123456 )
 
 

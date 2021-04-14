@@ -29,6 +29,14 @@ ui <- navbarPage(
   tab_02$ui                        # ui for dashboard_02
 )
 
+# server side
 
-# polished::secure_ui(ui)            # run this, if you want to use polished authentication
+server <- function(input, output) {
+  tab_login$server(input, output) # load login page server
+  tab_01$server(input, output)    # load server of dashboard_01
+  tab_02$server(input, output)    # load server of dashboard_02
+}
+
+
+shinyApp(ui = ui, server = server)
 
