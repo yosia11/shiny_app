@@ -8,7 +8,7 @@ header <- tagList(
 )
 
 footer <- tagList(
-  tags$hr('test'),
+  tags$hr(),
   tags$p('this is footer')
 )
 
