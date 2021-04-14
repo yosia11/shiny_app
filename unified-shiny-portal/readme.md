@@ -233,6 +233,17 @@ the final dashboard 02
 ![](https://raw.githubusercontent.com/6chaoran/data-story/master/shiny/unified-shiny-portal/image/dashboard_02.PNG
 )
 
+
+##  Authentication(Polished.tech) 
+
+1. go to https://polished.tech/docs/01-get-started
+2. crate your account 
+3. just follow the instruction:
+
+<center>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/3eIMzTyIwPU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 ## Conclusion
 
 In summary, in order to build a unified shiny portal:
@@ -253,4 +264,6 @@ In summary, in order to build a unified shiny portal:
 #### [shiny app on shinyapps.io](https://6chaoran.shinyapps.io/unified-shiny-portal/)
 #### [github repo](https://github.com/6chaoran/data-story/tree/master/shiny/unified-shiny-portal)
 
-_login credential ( username: liuchr, password: 123456 )_
+_login credential ( username: liuchr, password: 123456 )
+
+
