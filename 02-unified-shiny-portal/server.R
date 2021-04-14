@@ -9,7 +9,7 @@ server <- function(input, output) {
 
 
 
-polished::secure_server(server)  # run this, if you want to use polished authentication
+# polished::secure_server(server)  # run this, if you want to use polished authentication
 
 
 

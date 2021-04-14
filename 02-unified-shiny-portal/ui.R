@@ -30,5 +30,5 @@ ui <- navbarPage(
 )
 
 
-polished::secure_ui(ui)            # run this, if you want to use polished authentication
+# polished::secure_ui(ui)            # run this, if you want to use polished authentication
 
