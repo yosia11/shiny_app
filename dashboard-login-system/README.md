@@ -1,4 +1,4 @@
-# Steps to add login authentication feature in Shiny
+# Steps to add login authentication feature in shinydashboard
 
 ## Step 1 :
 
