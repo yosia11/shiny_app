@@ -15,24 +15,24 @@ library(RSQLite)                          # this packages is use for Database Sy
 library(RMySQL)                           # this packages is use to connect MySQL() 
 
 con <- dbConnect(MySQL(),
-                 user='dsciencelab',                   # please input your user account
-                 password='ApaAjaBoleh',                # please input your password
-                 dbname='dsciencelab',                 # please input your dbname
-                 host='www.db4free.net')                # Conneting R to your hosting
+                 user='dsciencelab',      # please input your user account
+                 password='ApaAjaBoleh',  # please input your password
+                 dbname='dsciencelab',    # please input your dbname
+                 host='www.db4free.net')  # Conneting R to your hosting
 
 # Note: Don't forget to run the following code (just for the first time) 
 # On your server run " SET GLOBAL local_infile = true " and possibly restart server
 # ----------------------------------------------------------------------
 
-# dbWriteTable(con, "airlines", airlines)                # Write data to your database
-# dbWriteTable(con, "airports", airports)                # Write data to your database
-# dbWriteTable(con, "flights", flights)                  # Write data to your database
+# dbWriteTable(con, "airlines", airlines) # Write data to your database
+# dbWriteTable(con, "airports", airports) # Write data to your database
+# dbWriteTable(con, "flights", flights)   # Write data to your database
 
-airlines <- tbl(con, "airlines")                         # read data from your database
-airports <- tbl(con, "airports")                         # read data from your database
-flights  <- tbl(con, "flights")                          # read data from your database
+airlines <- tbl(con, "airlines")          # read data from your database
+airports <- tbl(con, "airports")          # read data from your database
+flights  <- tbl(con, "flights")           # read data from your database
 
-# dbDisconnect(con)                                        # Disconnect from your database
+# dbDisconnect(con)                       # Disconnect from your database
 
 # Use purrr's split() and map() function to create the list
 # needed to display the name of the airline but pass its
