@@ -1,0 +1,12 @@
+name: flight-dashboard
+title: Flight-Dashboard
+username: siregarbakti
+account: siregarbakti
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 4768
+bundleId: 23212
+url: https://bookdown.org/MDS/flight-dashboard/
+when: 1591248688.06958
+asMultiple: FALSE
+asStatic: FALSE

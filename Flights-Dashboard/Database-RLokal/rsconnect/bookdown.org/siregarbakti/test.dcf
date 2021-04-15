@@ -1,0 +1,13 @@
+name: test
+title: Test
+username: siregarbakti
+account: siregarbakti
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 4769
+bundleId: 23213
+url: https://bookdown.org/MDS/test/
+when: 1591248753.55894
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: bar_plot.js|col_plot.js|global.R|www/Matana.png|www/me.jpg
