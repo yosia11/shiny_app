@@ -1,0 +1,12 @@
+name: HR-Analytics-Dashboard-Rshiny
+title: HR-Analytics-Dashboard-Rshiny
+username:
+account: dsciencelabs
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3637491
+bundleId: 4223803
+url: https://dsciencelabs.shinyapps.io/HR-Analytics-Dashboard-Rshiny/
+when: 1613368153.5579
+asMultiple: FALSE
+asStatic: FALSE

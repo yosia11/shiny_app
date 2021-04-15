@@ -15,9 +15,11 @@ library(RSQLite)                          # this packages is use for Database Sy
 library(RMySQL)                           # this packages is use to connect MySQL() 
 library(RMariaDB)                         # this packages is use to connect MariaDB() 
 library(nycflights13)                     # dataset
-library(config)
+library(isoband)                          # to publish your app at shiny server
+
 
 con <- dbConnect(MariaDB(),
+                 port     = 3306,
                  user='dsciencelab',                     # please input your user account
                  password='ApaAjaBoleh',                 # please input your password
                  dbname='dsciencelab',                   # please input your dbname
@@ -27,14 +29,14 @@ con <- dbConnect(MariaDB(),
 # On your server run " SET GLOBAL local_infile = true " and possibly restart server
 # ----------------------------------------------------------------------
 
-library(nycflights13)                                    # dataset
-dbWriteTable(con, "airlines", airlines)                  # Write data to your database
-dbWriteTable(con, "airports", airports)                  # Write data to your database
-dbWriteTable(con, "flights", flights)                    # Write data to your database
+# library(nycflights13)                                    # dataset
+# dbWriteTable(con, "airlines", airlines,append=T)         # Write data to your database
+# dbWriteTable(con, "airports", airports,append=T)         # Write data to your database
+# dbWriteTable(con, "flights", flights,append=T)           # Write data to your database
 
-airlines <- dbGetQuery(con, "airlines",append=T)         # read data from your database
-airports <- dbGetQuery(con, "airports",append=T)         # read data from your database
-flights  <- dbGetQuery(con, "flights",append=T)          # read data from your database
+airlines <- dbGetQuery(con, "SELECT* FROM airlines")     # read data from your database
+airports <- dbGetQuery(con, "SELECT* FROM airports")     # read data from your database
+flights  <- dbGetQuery(con, "SELECT* FROM flights")      # read data from your database
 
 dbDisconnect(con)                                        # Disconnect from your database
 
