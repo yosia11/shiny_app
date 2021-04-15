@@ -15,6 +15,21 @@ library(nycflights13)            # all flights that departed from NYC in 2013
 # needed to display the name of the airline but pass its
 # Carrier code as the value
 
+dw <- config::get("mssql")
+
+con <- DBI::dbConnect(
+  odbc::odbc(),
+  DSN = dw$DSN
+)
+
+airlines <- tbl(con, "airlines")
+airports <- tbl(con, "airports")
+flights  <- tbl(con, "flights")
+
+# Use purrr's split() and map() function to create the list
+# needed to display the name of the airline but pass its
+# Carrier code as the value
+
 airline_list <- airlines %>%
   collect() %>%
   split(.$name) %>%
@@ -28,5 +43,6 @@ month_list <- as.list(1:12) %>%
   set_names(month.name)
 
 month_list$`All Year` <- 99
+
 
 
