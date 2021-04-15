@@ -2,7 +2,7 @@
 
 This repository was created to help you learn more about Shiny:
 
-* [shiny](https://rstudio.github.io/shiny/tutorial/#inputs-and-outputs)
+* [shiny](https://shiny.rstudio.com/tutorial/) ---> [optional](https://rstudio.github.io/shiny/tutorial/#inputs-and-outputs)
 * [shinydashboard](https://rstudio.github.io/shinydashboard/get_started.html)
 * [flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/index.html)
 * [bs4Dash](https://rinterface.github.io/bs4Dash/articles/bs4Dash.html)
