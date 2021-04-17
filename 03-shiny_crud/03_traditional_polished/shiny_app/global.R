@@ -19,10 +19,22 @@ conn <- dbConnect(
   dbname = db_config$dbname
 )
 
-global_sessions_config(
+
+polished::global_sessions_config(
   app_name = "crud_polished",
-  api_key = "UfB3GMTqL5EEKCmEhwJhbCUKChCYRuCwrp"
+  api_key = "qovar1GnvQZsx4yTgVGzWPuQWsUxVM2nDd",
+  # firebase_config = list(
+  #   apiKey = "AIzaSyB18BY-msp5MuN1Kw0nFNUYJuw1vVQJGcE",
+  #   authDomain = "shiny-c596a.firebaseapp.com",
+  #   projectId = "shiny-c596a"
+  # ),
+  sign_in_providers = c("google", "email")
 )
+
+# global_sessions_config(
+#   app_name = "crud_polished",
+#   api_key = "qovar1GnvQZsx4yTgVGzWPuQWsUxVM2nDd"
+# )
 
 # Stop database connection when application stops
 shiny::onStop(function() {

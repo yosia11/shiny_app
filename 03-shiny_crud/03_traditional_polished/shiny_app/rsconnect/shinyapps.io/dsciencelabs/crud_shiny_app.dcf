@@ -5,8 +5,9 @@ account: dsciencelabs
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3928136
-bundleId: 4445043
+bundleId: 4479488
 url: https://dsciencelabs.shinyapps.io/crud_shiny_app/
-when: 1617863952.9907
+when: 1618569431.60619
+lastSyncTime: 1618569431.60619
 asMultiple: FALSE
 asStatic: FALSE
