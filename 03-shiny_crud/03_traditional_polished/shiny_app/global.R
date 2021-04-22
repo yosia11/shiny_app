@@ -28,7 +28,7 @@ polished::global_sessions_config(
     authDomain = "shiny-c596a.firebaseapp.com",
     projectId = "shiny-c596a"
   ),
-  sign_in_providers = c("google", "email")
+  sign_in_providers = c("facebook","instagram", "email")
 )
 
 # global_sessions_config(

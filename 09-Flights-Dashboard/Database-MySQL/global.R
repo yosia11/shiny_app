@@ -17,13 +17,19 @@ library(RMariaDB)                         # this packages is use to connect Mari
 library(nycflights13)                     # dataset
 library(isoband)                          # to publish your app at shiny server
 
+# con <- dbConnect(MariaDB(),
+#                  port     = 3306,
+#                  user='dsciencelab',                     # please input your user account
+#                  password='ApaAjaBoleh',                 # please input your password
+#                  dbname='dsciencelab',                   # please input your dbname
+#                  host='www.db4free.net')                 # Conneting R to your hosting
 
 con <- dbConnect(MariaDB(),
                  port     = 3306,
-                 user='dsciencelab',                     # please input your user account
-                 password='ApaAjaBoleh',                 # please input your password
-                 dbname='dsciencelab',                   # please input your dbname
-                 host='www.db4free.net')                 # Conneting R to your hosting
+                 user='root',                            # please input your user account
+                 password='',                            # please input your password
+                 dbname='flights',                       # please input your dbname
+                 host='localhost')                       # Conneting R to your hosting
 
 # Note: Don't forget to run the following code (just for the first time)
 # On your server run " SET GLOBAL local_infile = true " and possibly restart server

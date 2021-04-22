@@ -18,7 +18,7 @@ my_ui <- fluidPage(
 
 # customize your sign in page UI with logos, text, and colors.
 my_custom_sign_in_page <- sign_in_ui_default(
-  color = "#006CB5",
+  color = "#006CB3",
   company_name = "D`Sciencelabs",
   logo_top = tags$img(
     src = "Picture2.png",
@@ -30,7 +30,7 @@ my_custom_sign_in_page <- sign_in_ui_default(
     alt = "D`Sciencelabs Logo",
     style = "width: 130px; margin-bottom: 15px; padding-top: 15px;"
   ),
-  icon_href = "www/background.jpg",
+  icon_href = "https://github.com/dsciencelabs/shiny_app/blob/main/03-shiny_crud/03_traditional_polished/shiny_app/www/background.jpg",
   background_image = "background"
 )
 
