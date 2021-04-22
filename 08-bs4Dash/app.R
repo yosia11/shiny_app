@@ -10,7 +10,7 @@ shiny::shinyApp(
                            compact = FALSE,
                            controlbarIcon = "th",
                            leftUi = actionButton("goButton", "Home", class = "btn-success"),
-                           rightUi = actionButton("goButton", "Profle", class = "btn-success")
+                           rightUi = actionButton("goButton", "Profile", class = "btn-success")
                            ),
     sidebar = bs4DashSidebar(inputId = NULL,
                              disable = FALSE,
@@ -31,8 +31,26 @@ shiny::shinyApp(
                             text = "Tab 1"),
                         bs4SidebarMenuSubItem(
                             tabName = "subtab2",
-                            text = "Tab 2")
-                        )
+                            text = "Tab 2"),
+                        
+                        bs4SidebarMenuSubItem(
+                            tabName = "subtab3",
+                            text = "Tab 3")
+                        ),
+                    
+                    bs4SidebarMenuItem(
+                        text = "Menu2",
+                        bs4SidebarMenuSubItem(
+                            tabName = "subtab1",
+                            text = "Tab 1"),
+                        bs4SidebarMenuSubItem(
+                            tabName = "subtab2",
+                            text = "Tab 2"),
+                        
+                        bs4SidebarMenuSubItem(
+                            tabName = "subtab3",
+                            text = "Tab 3")
+                    )
                     )
                 ),
                 

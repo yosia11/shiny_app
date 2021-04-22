@@ -32,7 +32,7 @@ ui<-dashboardPage(skin="blue",
   dashboardBody(
     tabItems(
       tabItem(tabName = "raw",
-              fluidRow(box(width = 12,dataTableOutput("table"),title="Data"))
+              fluidRow(box(width = 12,dataTableOutput("table"),title="Dataset"))
               ),
       tabItem(tabName = "dash",
               fluidRow(
@@ -76,6 +76,12 @@ ui<-dashboardPage(skin="blue",
   )
 )
 server<-function(input,output){
+  
+  output$table<-DT::renderDataTable({
+    DT::datatable(head(dat), 
+                  options = list(scrollX = TRUE),filter='top')
+  })
+  
   output$plot1<-renderPlot({
   ggplot(data=dat,aes(Age,fill="red"))+geom_density()+
     labs(title="Age distribution for employees") +
@@ -173,13 +179,6 @@ server<-function(input,output){
   }
   
   )
-  
-  
-  
-  output$table<-DT::renderDataTable({
-    DT::datatable(head(dat), 
-                  options = list(scrollX = TRUE),filter='top')
-  })
   
 }
 shinyApp(ui,server)
