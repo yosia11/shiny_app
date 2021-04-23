@@ -1,6 +1,6 @@
 <p align="center">
   <br>
-  <img width="240" src="dsciencelabs.gif" alt="awesome-shiny-extensions logo">
+  <img width="240" src="Logo.gif" alt="Dsciencelabs logo">
   <br>
   <br>
 </p>
