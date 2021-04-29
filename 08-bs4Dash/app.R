@@ -1,72 +1,75 @@
 library(shiny)
 library(bs4Dash)
 
-shiny::shinyApp(
-    ui = bs4DashPage(enable_preloader = F,
-    navbar = bs4DashNavbar(skin = "light",
+    ui = bs4DashPage(enable_preloader = FALSE,
+                     controlbar_collapsed = FALSE,
+                     controlbar_overlay = FALSE,
+    navbar = bs4DashNavbar(skin = "light", 
                            status = NULL,
                            border = TRUE,
                            sidebarIcon = "bars",
                            compact = FALSE,
                            controlbarIcon = "th",
-                           leftUi = actionButton("goButton", "Home", class = "btn-success"),
-                           rightUi = actionButton("goButton", "Profile", class = "btn-success")
+                           leftUi = actionButton("goButton", "Left UI", class = "btn-success"),
+                           rightUi = actionButton("goButton", "Right UI", class = "btn-success")
                            ),
     sidebar = bs4DashSidebar(inputId = NULL,
                              disable = FALSE,
                              title = "D`Sciencelabs",
                              skin = "dark",
-                             status = "danger",
+                             status = "primary",
                              brandColor = NULL,
                              url = "https://rpubs.com/dsciencelabs/",
                              src = "https://github.com/dsciencelabs/shiny_app/blob/main/Logo.gif?raw=true",
                              elevation = 4,
                              opacity = 0.8,
                              expand_on_hover = TRUE,
-                bs4SidebarMenu(
-                    bs4SidebarMenuItem(
-                            text = "Menu1",
-                        bs4SidebarMenuSubItem(
-                            tabName = "subtab1",
-                            text = "Tab 1"),
-                        bs4SidebarMenuSubItem(
-                            tabName = "subtab2",
-                            text = "Tab 2"),
-                        
-                        bs4SidebarMenuSubItem(
-                            tabName = "subtab3",
-                            text = "Tab 3")
-                        ),
-                    
-                    bs4SidebarMenuItem(
-                        text = "Menu2",
-                        bs4SidebarMenuSubItem(
-                            tabName = "subtab1",
-                            text = "Tab 1"),
-                        bs4SidebarMenuSubItem(
-                            tabName = "subtab2",
-                            text = "Tab 2"),
-                        
-                        bs4SidebarMenuSubItem(
-                            tabName = "subtab3",
-                            text = "Tab 3")
-                    )
-                    )
+                             bs4SidebarMenu(
+                                 # bs4SidebarHeader("List of items 1"),
+                                 bs4SidebarMenuItem(
+                                     text = "Item List",
+                                     icon = "bars",
+                                     startExpanded = TRUE,
+                                     bs4SidebarMenuSubItem(
+                                         text = "Item 1",
+                                         tabName = "item1",
+                                         icon = "circle-thin"
+                                         ),
+                                     bs4SidebarMenuSubItem(
+                                         text = "Item 2",
+                                         tabName = "item2",
+                                         icon = "circle-thin"
+                                         )
+                                 ),
+                                # bs4SidebarHeader("List of items 2"),
+                                 bs4SidebarMenuItem(
+                                     text = "Item List 2",
+                                     icon = "bars",
+                                     startExpanded = FALSE,
+                                     bs4SidebarMenuSubItem(
+                                         text = "Item 3",
+                                         tabName = "item3",
+                                         icon = "circle-thin"
+                                     ),
+                                     bs4SidebarMenuSubItem(
+                                         text = "Item 4",
+                                         tabName = "item4",
+                                         icon = "circle-thin"
+                                     )
+                                 )
+                             )
                 ),
                 
-    controlbar = bs4DashControlbar(),
-    footer = bs4DashFooter(),
-    title = "test",
     body = bs4DashBody(
-        fluidRow(
-            column(
-                width = 6,
+        bs4TabItems(
+            bs4TabItem(
+                tabName = "item1",
                 bs4Card(
-                    title = "Closable Box with dropdown", 
-                    closable = TRUE, 
+                    title = "Closable Box with dropdown",
+                    closable = TRUE,
                     width = 12,
-                    status = "warning", 
-                    solidHeader = FALSE, 
+                    status = "warning",
+                    solidHeader = FALSE,
                     collapsible = TRUE,
                     labelText = 1,
                     labelStatus = "danger",
@@ -81,44 +84,96 @@ shiny::shinyApp(
                     p("Box Content")
                 )
             ),
-            column(
-                width = 6, 
+            bs4TabItem(
+                tabName = "item2",
                 bs4Card(
-                    title = "Closable Box with gradient", 
-                    closable = TRUE, 
+                    title = "Closable Box with gradient",
+                    closable = TRUE,
                     width = 12,
-                    status = "warning", 
-                    solidHeader = FALSE, 
+                    status = "warning",
+                    solidHeader = FALSE,
                     gradientColor = "success",
                     collapsible = TRUE,
                     p("Box Content")
                 )
-            )
-        ),
-        fluidRow(
-            bs4Card(
-                title = "Closable Box with solidHeader", 
-                closable = TRUE, 
-                width = 6,
-                solidHeader = TRUE, 
-                status = "primary",
-                collapsible = TRUE,
-                p("Box Content")
             ),
-            bs4Card(
-                title = "Maximizable Card", 
-                width = 6,
-                status = "warning", 
-                closable = FALSE,
-                maximizable = TRUE, 
-                collapsible = FALSE,
-                sliderInput("obs", "Number of observations:",
-                            min = 0, max = 1000, value = 500
-                ),
-                plotOutput("distPlot")
+            bs4TabItem(
+                tabName = "item3",
+                bs4Card(
+                    title = "Closable Box with solidHeader",
+                    closable = TRUE,
+                    width = 12,
+                    solidHeader = TRUE,
+                    status = "primary",
+                    collapsible = TRUE,
+                    p("Box Content")
+                )
+            ),
+            bs4TabItem(
+                tabName = "item4",
+                bs4Card(
+                    title = "Maximizable Card",
+                    width = 12,
+                    status = "warning",
+                    closable = TRUE,
+                    collapsible = TRUE,
+                    maximizable = TRUE,
+                    sliderInput("bins",
+                                "Number of bins:",
+                                min = 1,
+                                max = 50,
+                                value = 30),
+                    plotOutput("distPlot")
+                )
             )
         )
-    )
+        
     ),
-    server = function(input, output) {}
-)
+    
+    controlbar = bs4DashControlbar(
+        bs4DashControlbarMenu(
+            id = "tabcard",
+            side = "left",
+            bs4DashControlbarItem(
+                tabName = "Tab1", 
+                active = FALSE,
+                "Content 1"
+            ),
+            bs4DashControlbarItem(
+                tabName = "Tab2", 
+                active = TRUE,
+                "Content 2"
+            ),
+            bs4DashControlbarItem(
+                tabName = "Tab3", 
+                active = FALSE,
+                "Content 3"
+            )
+        )
+    ),
+    
+    footer = bs4DashFooter(Sys.Date(), 
+                           copyrights = "@d'sciencelabs", 
+                           right_text = "by Bakti Siregar, M.Sc")
+    
+    )
+    
+    server = function(input, output) {
+    
+        output$distPlot <- renderPlot({
+            
+            # generate bins based on input$bins from ui.R
+            x    <- faithful[, 2]
+            bins <- seq(min(x), max(x), length.out = input$bins + 1)
+            
+            # draw the histogram with the specified number of bins
+            hist(x, breaks = bins, col = 'darkgray', border = 'white')
+            
+        })
+        
+        
+        
+        
+    }
+    
+shiny::shinyApp(ui,server)
