@@ -1,8 +1,9 @@
 library(shiny)
 library(bs4Dash)
+library(ggplot2)  # for the diamonds dataset and visualization
+library(DT)
 
     ui = bs4DashPage(enable_preloader = FALSE,
-                     controlbar_collapsed = FALSE,
                      controlbar_overlay = FALSE,
     navbar = bs4DashNavbar(skin = "light", 
                            status = NULL,
@@ -27,18 +28,18 @@ library(bs4Dash)
                              bs4SidebarMenu(
                                  # bs4SidebarHeader("List of items 1"),
                                  bs4SidebarMenuItem(
-                                     text = "Item List",
-                                     icon = "bars",
-                                     startExpanded = TRUE,
+                                     text = "Item List 1",
+                                     icon = "list",
+                                     startExpanded = FALSE,
                                      bs4SidebarMenuSubItem(
                                          text = "Item 1",
                                          tabName = "item1",
-                                         icon = "circle-thin"
+                                         icon = "sitemap"
                                          ),
                                      bs4SidebarMenuSubItem(
                                          text = "Item 2",
                                          tabName = "item2",
-                                         icon = "circle-thin"
+                                         icon = "sitemap"
                                          )
                                  ),
                                 # bs4SidebarHeader("List of items 2"),
@@ -94,25 +95,15 @@ library(bs4Dash)
             ),
             bs4TabItem(
                 tabName = "item2",
-                bs4Card(title = "Closable Box with dropdown and gradien color",
-                        closable = TRUE,
-                        width = 12,
-                        status = "warning",
-                        solidHeader = FALSE,
-                        collapsible = TRUE,
-                        gradientColor = "success",
-                        labelText = 1,
-                        labelStatus = "danger",
-                        labelTooltip = "Hi Bro!",
-                        dropdownIcon = "wrench",
-                        dropdownMenu = dropdownItemList(
-                            dropdownItem(url = "http://www.google.com", name = "Link to google"),
-                            dropdownItem(url = "#", name = "item 2"),
-                            dropdownDivider(),
-                            dropdownItem(url = "#", name = "item 3")
-                        ),
-                        p("Box Content")
-                )
+                bs4Card(
+                    title = "Examples of DataTables",
+                    closable = TRUE,
+                    width = 12,
+                    solidHeader = TRUE,
+                    status = "primary",
+                    collapsible = TRUE,
+                    dataTableOutput('table')
+                    )
             ),
             bs4TabItem(
                 tabName = "item3",
@@ -123,7 +114,37 @@ library(bs4Dash)
                     solidHeader = TRUE,
                     status = "primary",
                     collapsible = TRUE,
-                    p("Box Content")
+                    tags$h2("Dropdown Button"),
+                    br(),
+                    dropdown(
+                        
+                        tags$h3("List of Input"),
+                        
+                        pickerInput(inputId = 'xcol2',
+                                    label = 'X Variable',
+                                    choices = names(iris),
+                                    options = list(`style` = "btn-info")),
+                        
+                        pickerInput(inputId = 'ycol2',
+                                    label = 'Y Variable',
+                                    choices = names(iris),
+                                    selected = names(iris)[[2]],
+                                    options = list(`style` = "btn-warning")),
+                        
+                        sliderInput(inputId = 'clusters2',
+                                    label = 'Cluster count',
+                                    value = 3,
+                                    min = 1, max = 9),
+                        
+                        style = "unite", icon = icon("gear"),
+                        status = "danger", width = "300px",
+                        animate = animateOptions(
+                            enter = animations$fading_entrances$fadeInLeftBig,
+                            exit = animations$fading_exits$fadeOutRightBig
+                        )
+                    ),
+                    
+                    plotOutput(outputId = 'plot2')
                 )
             ),
             bs4TabItem(
@@ -176,7 +197,11 @@ library(bs4Dash)
     )
     
     server = function(input, output) {
-    
+        
+        # data 
+        output$table <- renderDataTable(iris)
+        
+        # Plot 1
         output$distPlot <- renderPlot({
             
             # generate bins based on input$bins from ui.R
@@ -189,6 +214,26 @@ library(bs4Dash)
         })
         
         
+        # Plot 2
+        selectedData2 <- reactive({
+            iris[, c(input$xcol2, input$ycol2)]
+        })
+        
+        clusters2 <- reactive({
+            kmeans(selectedData2(), input$clusters2)
+        })
+        
+        output$plot2 <- renderPlot({
+            palette(c("#E41A1C", "#377EB8", "#4DAF4A",
+                      "#984EA3", "#FF7F00", "#FFFF33",
+                      "#A65628", "#F781BF", "#999999"))
+            
+            par(mar = c(5.1, 4.1, 0, 1))
+            plot(selectedData2(),
+                 col = clusters2()$cluster,
+                 pch = 20, cex = 3)
+            points(clusters2()$centers, pch = 4, cex = 4, lwd = 4)
+        })
         
         
     }
