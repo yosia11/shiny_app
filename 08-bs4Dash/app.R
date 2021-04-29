@@ -65,36 +65,53 @@ library(bs4Dash)
             bs4TabItem(
                 tabName = "item1",
                 bs4Card(
-                    title = "Closable Box with dropdown",
+                    title = "Closable Box with some text",
                     closable = TRUE,
                     width = 12,
                     status = "warning",
                     solidHeader = FALSE,
                     collapsible = TRUE,
-                    labelText = 1,
-                    labelStatus = "danger",
-                    labelTooltip = "Hi Bro!",
-                    dropdownIcon = "wrench",
-                    dropdownMenu = dropdownItemList(
-                        dropdownItem(url = "http://www.google.com", name = "Link to google"),
-                        dropdownItem(url = "#", name = "item 2"),
-                        dropdownDivider(),
-                        dropdownItem(url = "#", name = "item 3")
-                    ),
-                    p("Box Content")
+                    tags$h1("Intro"),
+                    p("I wrote this project to make it easier for students to make shiny applications by using the bs4Dash package."),
+                    tags$h2("About bs4Dash"),
+                    tags$p("bs4Dash relies on the same basis as {shinydashboard}, 
+                            that is the AdminLTE HTML template, except the version is higher (3.1.0 vs 2.4). 
+                            The biggest difference is the dependence on Bootstrap 4, 
+                            which is not natively supported by {Shiny}. 
+                            That’s why elements like tabsetPanel(), actionButton(), 
+                            … have been rewritten to provide full Bootstrap4 support. 
+                            In addition, bs4Dash comes with extra elements that will 
+                            help you to develop Shiny apps with a more professional look and feel.
+                            Below is a summary of the main features:"),
+                    div(img(
+                        src = "https://github.com/dsciencelabs/shiny_app/blob/main/Logo.gif?raw=true",
+                        width = 400,
+                        height = 400,
+                        align = "center"),style="text-align: center;"
+                    )
+                    
                 )
             ),
             bs4TabItem(
                 tabName = "item2",
-                bs4Card(
-                    title = "Closable Box with gradient",
-                    closable = TRUE,
-                    width = 12,
-                    status = "warning",
-                    solidHeader = FALSE,
-                    gradientColor = "success",
-                    collapsible = TRUE,
-                    p("Box Content")
+                bs4Card(title = "Closable Box with dropdown and gradien color",
+                        closable = TRUE,
+                        width = 12,
+                        status = "warning",
+                        solidHeader = FALSE,
+                        collapsible = TRUE,
+                        gradientColor = "success",
+                        labelText = 1,
+                        labelStatus = "danger",
+                        labelTooltip = "Hi Bro!",
+                        dropdownIcon = "wrench",
+                        dropdownMenu = dropdownItemList(
+                            dropdownItem(url = "http://www.google.com", name = "Link to google"),
+                            dropdownItem(url = "#", name = "item 2"),
+                            dropdownDivider(),
+                            dropdownItem(url = "#", name = "item 3")
+                        ),
+                        p("Box Content")
                 )
             ),
             bs4TabItem(
@@ -141,7 +158,7 @@ library(bs4Dash)
             ),
             bs4DashControlbarItem(
                 tabName = "Tab2", 
-                active = TRUE,
+                active = FALSE,
                 "Content 2"
             ),
             bs4DashControlbarItem(
