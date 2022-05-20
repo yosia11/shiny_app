@@ -28,7 +28,7 @@ con <- dbConnect(MariaDB(),
                  port     = 3306,
                  user='root',                            # please input your user account
                  password='',                            # please input your password
-                 dbname='new_maridb',                       # please input your dbname
+                 dbname='flights',                       # please input your dbname
                  host='localhost')                       # Conneting R to your hosting
 
 # Note: Don't forget to run the following code (just for the first time)

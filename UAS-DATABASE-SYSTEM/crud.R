@@ -5,7 +5,7 @@ ui <- dashboardPage(
   dashboardHeader(),
   dashboardSidebar(
     collapsed = TRUE, 
-    div(htmlOutput("welcome"), style = "padding: 20px"),
+    div(htmlOutput("welcomee"), style = "padding: 20px"),
     sidebarMenu(
       menuItem("View Tables", tabName = "view_table", icon = icon("search")),
       menuItem("Create Tables", tabName = "create_table", icon = icon("plus-square")),
